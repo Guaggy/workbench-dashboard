@@ -1,0 +1,17 @@
+[Unit]
+Description=Bench dashboard hub (publishes data to mosquitto)
+After=network-online.target mosquitto.service
+Wants=network-online.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/bench
+ExecStart=/usr/bin/python3 /home/pi/bench/bench_hub.py
+Restart=always
+RestartSec=30
+# the pi zero also runs pi-hole, so keep this one polite
+Nice=10
+MemoryMax=150M
+
+[Install]
+WantedBy=multi-user.target
