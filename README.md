@@ -19,7 +19,6 @@ Dashboard (ESP32-S3)  <--MQTT-->  Raspberry Pi hub (Mosquitto + bench_hub.py)  <
 ```
 
 - `src/` and `include/config.h`: firmware. All tunable settings live in `config.h`.
-- `pi/`: the hub service, a vault feed that reads a folder of Markdown files, a status report, and unit tests in `pi/tests/`.
 - `tools/ota.py`: firmware update over WiFi.
 
 ## Build and flash
@@ -36,12 +35,7 @@ python tools/ota.py                               # over WiFi, after the first f
 
 ## Hub
 
-```
-cd pi
-python -m unittest discover -s tests
-```
-
-The hub runs as a systemd service (`pi/bench-hub.service`) on a Raspberry Pi Zero W.
+The hub runs as a systemd service on a Raspberry Pi Zero W. Its code (the hub service, a vault feed that reads a folder of Markdown files, and a status report) lives in a separate private repo with the rest of that Pi's setup.
 
 ## Notes
 
